@@ -71,3 +71,7 @@ button:focus-visible {
 .fullspan-bar {
   background-color: #030202;
 }
+
+.portrait-image {
+  object-fit: contain;
+}
