@@ -79,6 +79,10 @@ export function ContentArea(){
                     <span className='flex-1 text-center'>$96,000</span>
                   </li>
                   <li className='flex flex-row'>
+                    <h3 className=''>Freelance:</h3>
+                    <span className='flex-1 text-center'>$1650 (1st week), $55/hr</span>
+                  </li>
+                  <li className='flex flex-row'>
                     <h3 className=''>Contact:</h3>
                     <a className='flex-1 text-center' href='mailto:Sullivansmith057@gmail.com' >~Send Email~</a>
                   </li>
@@ -98,9 +102,13 @@ export function ContentArea(){
 
         {/* Content Area */}
         <div id='content-area' className='content-area mx-auto md:mx-0 bg-zinc-800 min-w-100 min-h-100 rounded max-w-100'>
-          <div id='published-projects-slide' className='published-projects'>
-            <h2 className='flex justify-center '>Projects</h2>
-            <hr className='border border-zinc-900'/>
+
+          <h2 className='flex justify-center'>Projects</h2>
+          <hr className='border border-zinc-900'/>
+
+          <div id='published-projects-slide' className='published-projects overflow-y-auto  max-h-120'>
+
+            {/* ExpJournal */}
             <ul className='py-2'>
               <li className=''>
                 
@@ -108,10 +116,12 @@ export function ContentArea(){
                   <a href="https://expjournal-frontend.onrender.com/" target="_blank">Sully's ExpJournal</a>
                   <a href='https://github.com/CentipedeSully/expJournal' target='_blank'>Visit Github</a>
                 </h3>
-                <p className='flex justify-center px-3 italic pb-2'> A personal, cloud-based note organizer</p>
+
+                <p className='flex justify-center px-3 italic pb-2'> A personal, full stack, cloud-based note organizer</p>
+
                 <div className='flex flex-col gap-1'>
 
-                  <div className='flex flex-row justify-center'>
+                  <div className='flex flex-row justify-center gap-1'>
                     <img className='logo-img' src="./src/MongoDB_img.png" alt="mongoDb_icon" />
                     <img className='logo-img' src="./src/expressJs_img.png" alt="expressJs_icon" />
                     <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
@@ -122,7 +132,7 @@ export function ContentArea(){
                   <div className=''>
                     <h4 className='pl-10'>Exp Gained:</h4>
                     <ul className=' pl-15 list-disc'>
-                      <li>Deploying full-stack applications</li>
+                      <li>Deploying full stack applications</li>
                       <li>Dev vs Prod mode server routing</li>
                       <li>Handling server to database operations</li>
                       <li>Learning 3rd party plugins (ex. RichTextEditor)</li>
@@ -131,14 +141,77 @@ export function ContentArea(){
                       <li>Iterative delivery via multiple builds</li>
                     </ul>
                   </div>
+
                 </div>
-                
-
-
                 
               </li>
             </ul>
             <hr className='border border-zinc-900'/>
+
+            {/* Yansi Auto */}
+            <ul className='py-2'>
+              <li className=''>
+                
+                <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
+                  <a href="https://yansiautorepairandpaint.com/" target="_blank">Yansi Auto Repair & Paint</a>
+                  <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
+                </h3>
+
+                <p className='flex justify-center px-3 italic pb-2'> An local auto repair promotional website</p>
+
+                <div className='flex flex-col gap-1'>
+
+                  <div className='flex flex-row justify-center gap-1'>
+                    <img className='logo-img' src="./src/wordpress_img.png" alt="wordpress_icon" />
+                    <img className='logo-img' src="./src/hostinger_img.png" alt="hostinger_icon" />
+                  </div>
+
+                  <div className=''>
+                    <h4 className='pl-10'>Exp Gained:</h4>
+                    <ul className=' pl-15 list-disc'>
+                      <li>Developing and deploying Wordpress sites </li>
+                      <li>Communicating directly with Clients</li>
+                    </ul>
+                  </div>
+
+                </div>
+                
+              </li>
+            </ul>
+            <hr className='border border-zinc-900'/>
+
+            {/* Family House Clean */}
+            <ul className='py-2'>
+              <li className=''>
+                
+                <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
+                  <a href="https://www.yourfamilyhousecleanllc.com/" target="_blank">YFHC</a>
+                  <a href='https://github.com/CentipedeSully/YFHC-website' target='_blank'>Visit Github</a>
+                </h3>
+
+                <p className='flex justify-center px-3 italic pb-2'> A local family house cleaning promotional website</p>
+
+                <div className='flex flex-col gap-1'>
+
+                  <div className='flex flex-row justify-center gap-1'>
+                    <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
+                    <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
+                    <img className='render-img' src="./src/render_img.png" alt="render_icon" />
+                  </div>
+
+                  <div className=''>
+                    <h4 className='pl-10'>Exp Gained:</h4>
+                    <ul className=' pl-15 list-disc'>
+                      <li>Connecting with to potential clients</li>
+                      <li>Developing Front ends using React, Tailwind, & Typescript</li>
+                    </ul>
+                  </div>
+
+                </div>
+                
+              </li>
+            </ul>
+            
           </div>
         </div>
           
