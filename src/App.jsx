@@ -66,11 +66,12 @@ export function ContentArea(props){
   }
 
 
-  const [pressedBtn, setPressedBtn] = useState(1)
+  const [pressedBtn, setPressedBtn] = useState(0)
 
   const [contentHeader, setContentHeader] = useState("")
   useEffect( ()=> {
-   UpdateContent(1);
+    setPressedBtn(0);
+    UpdateContent(0);
   },[])
 
   function HandleBtn1Press(){
@@ -157,7 +158,7 @@ export function ContentArea(props){
           <div id='content-area' className='content-area mx-auto bg-zinc-800 rounded w-100'>
 
 
-            <div className='flex flex-row justify-around'>
+            <div className='flex flex-row justify-between px-10'>
               <h2 className='flex justify-center'>{contentHeader}</h2>
               <div className='flex flex-row gap-0.5'>
                 <Button HandleClick={HandleBtn1Press} BtnId={1} PressedBtn={pressedBtn}/>
