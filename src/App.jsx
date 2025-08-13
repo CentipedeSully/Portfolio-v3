@@ -1,19 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contentPage, setContentPage] = useState(0)
+
+  function SetPageToProjects(){
+    setContentPage(0);
+  }
+  
+  function SetPageToLeverages(){
+    setContentPage(1)
+  }
 
   return (
-    <>
     <div className='flex flex-col min-h-screen'>
       <Navbar />
-      <ContentArea />
+      <ContentArea 
+        page = {contentPage}
+        HandleBtn1Press = {SetPageToProjects}
+        HandleBtn2Press = {SetPageToLeverages}
+      />
       <Footer />  
     </div>
-      
-    </>
   )
 }
 
@@ -30,8 +39,46 @@ export function Navbar() {
   )
 }
 
-export function ContentArea(){
+export function ContentArea(props){
 
+
+  function UpdateContent(){
+    switch (props.page){
+      case 0:
+        setContentHeader("Projects");
+        break;
+      
+      case 1:
+        setContentHeader("Leverage");
+        break;
+    }
+  }
+
+  function GetPageContent(){
+
+    switch (props.page){
+      case 0:
+        return (<Projects/>);
+      
+      case 1:
+        return (<Leverages/>);
+    }
+  }
+
+
+
+  const [contentHeader, setContentHeader] = useState("")
+  useEffect( ()=> {
+   UpdateContent();
+  },[])
+
+  function HandleBtn1Press(){
+    props.HandleBtn1Press();
+  }
+
+  function HandleBtn2Press(){
+    props.HandleBtn2Press();
+  }
   
   return (
     <div className='w-screen flex flex-col flex-1 px-10'>
@@ -46,7 +93,7 @@ export function ContentArea(){
          - small->medium screens see stacked view
          - large(+) screens see the side-by-side display
       */}
-      <div className='flex justify-center bg-zinc-900 mb-12'>
+      <div className='flex justify-center bg-zinc-900 mb-12'> 
 
         {/* All content */}
         <div className='page-content flex gap-2 flex-col md:flex-row border-2 border-zinc-900 rounded py-2'>
@@ -100,126 +147,39 @@ export function ContentArea(){
 
           </div>
 
-        {/* Content Area */}
-        <div id='content-area' className='content-area mx-auto md:mx-0 bg-zinc-800 min-w-100 min-h-100 rounded max-w-100'>
+          {/* Content Area */}
+          <div id='content-area' className='content-area mx-auto md:mx-0 bg-zinc-800 rounded w-100'>
 
-          <h2 className='flex justify-center'>Projects</h2>
-          <hr className='border border-zinc-900'/>
 
-          <div id='published-projects-slide' className='published-projects overflow-y-auto  max-h-120'>
-
-            {/* ExpJournal */}
-            <ul className='py-2'>
-              <li className=''>
-                
-                <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
-                  <a href="https://expjournal-frontend.onrender.com/" target="_blank">Sully's ExpJournal</a>
-                  <a href='https://github.com/CentipedeSully/expJournal' target='_blank'>Visit Github</a>
-                </h3>
-
-                <p className='flex justify-center px-3 italic pb-2'> A personal, full stack, cloud-based note organizer</p>
-
-                <div className='flex flex-col gap-1'>
-
-                  <div className='flex flex-row justify-center gap-1'>
-                    <img className='logo-img' src="./src/MongoDB_img.png" alt="mongoDb_icon" />
-                    <img className='logo-img' src="./src/expressJs_img.png" alt="expressJs_icon" />
-                    <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
-                    <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
-                    <img className='render-img' src="./src/render_img.png" alt="render_icon" />
-                  </div>
-
-                  <div className=''>
-                    <h4 className='pl-10'>Exp Gained:</h4>
-                    <ul className=' pl-15 list-disc'>
-                      <li>Deploying full stack applications</li>
-                      <li>Dev vs Prod mode server routing</li>
-                      <li>Handling server to database operations</li>
-                      <li>Learning 3rd party plugins (ex. RichTextEditor)</li>
-                      <li>Implementing user authentication features</li>
-                      <li>Salting & managing user account data</li>
-                      <li>Iterative delivery via multiple builds</li>
-                    </ul>
-                  </div>
-
-                </div>
-                
-              </li>
-            </ul>
-            <hr className='border border-zinc-900'/>
-
-            {/* Yansi Auto */}
-            <ul className='py-2'>
-              <li className=''>
-                
-                <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
-                  <a href="https://yansiautorepairandpaint.com/" target="_blank">Yansi Auto Repair & Paint</a>
-                  <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
-                </h3>
-
-                <p className='flex justify-center px-3 italic pb-2'> An local auto repair promotional website</p>
-
-                <div className='flex flex-col gap-1'>
-
-                  <div className='flex flex-row justify-center gap-1'>
-                    <img className='logo-img' src="./src/wordpress_img.png" alt="wordpress_icon" />
-                    <img className='logo-img' src="./src/hostinger_img.png" alt="hostinger_icon" />
-                  </div>
-
-                  <div className=''>
-                    <h4 className='pl-10'>Exp Gained:</h4>
-                    <ul className=' pl-15 list-disc'>
-                      <li>Developing and deploying Wordpress sites </li>
-                      <li>Communicating directly with Clients</li>
-                    </ul>
-                  </div>
-
-                </div>
-                
-              </li>
-            </ul>
-            <hr className='border border-zinc-900'/>
-
-            {/* Family House Clean */}
-            <ul className='py-2'>
-              <li className=''>
-                
-                <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
-                  <a href="https://www.yourfamilyhousecleanllc.com/" target="_blank">YFHC</a>
-                  <a href='https://github.com/CentipedeSully/YFHC-website' target='_blank'>Visit Github</a>
-                </h3>
-
-                <p className='flex justify-center px-3 italic pb-2'> A local family house cleaning promotional website</p>
-
-                <div className='flex flex-col gap-1'>
-
-                  <div className='flex flex-row justify-center gap-1'>
-                    <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
-                    <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
-                    <img className='render-img' src="./src/render_img.png" alt="render_icon" />
-                  </div>
-
-                  <div className=''>
-                    <h4 className='pl-10'>Exp Gained:</h4>
-                    <ul className=' pl-15 list-disc'>
-                      <li>Connecting with to potential clients</li>
-                      <li>Developing Front ends using React, Tailwind, & Typescript</li>
-                    </ul>
-                  </div>
-
-                </div>
-                
-              </li>
-            </ul>
+            <div className='flex flex-row justify-around'>
+              <h2 className='flex justify-center'>{contentHeader}</h2>
+              <div className='flex flex-row gap-0.5'>
+                <Button HandleClick={HandleBtn1Press}/>
+                <Button HandleClick={HandleBtn2Press}/>
+              </div>
+            </div>
             
+
+            <Divider />
+            <div className='h-120'>
+              { GetPageContent() }
+            </div>
+            
+            <Divider />
+
           </div>
-        </div>
           
         </div>
 
       </div>
 
     </div>
+  )
+}
+
+export function Divider(){
+  return (
+    <hr className='border border-zinc-900'/>
   )
 }
 
@@ -235,8 +195,171 @@ export function Footer(){
 
  }
 
+export function Projects(){
+  return (
+    <div id='projects-section' className='projects-section overflow-y-auto h-full'>
+
+      {/* ExpJournal */}
+      <ul className='py-2 hover:bg-zinc-700'>
+        <li className=''>
+          
+          <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
+            <a href="https://expjournal-frontend.onrender.com/" target="_blank">Sully's ExpJournal</a>
+            <a href='https://github.com/CentipedeSully/expJournal' target='_blank'>Visit Github</a>
+          </h3>
+
+          <p className='flex justify-center px-3 italic pb-2'> A personal, full stack, cloud-based note organizer</p>
+
+          <div className='flex flex-col gap-1'>
+
+            <div className='flex flex-row justify-center gap-1'>
+              <img className='logo-img' src="./src/MongoDB_img.png" alt="mongoDb_icon" />
+              <img className='logo-img' src="./src/expressJs_img.png" alt="expressJs_icon" />
+              <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
+              <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
+              <img className='render-img' src="./src/render_img.png" alt="render_icon" />
+            </div>
+
+            <div className=''>
+              <h4 className='pl-10'>Exp Gained:</h4>
+              <ul className=' pl-15 list-disc'>
+                <li>Deploying full stack applications</li>
+                <li>Dev vs Prod mode server routing</li>
+                <li>Handling server to database operations</li>
+                <li>Learning 3rd party plugins (ex. RichTextEditor)</li>
+                <li>Implementing user authentication features</li>
+                <li>Salting & managing user account data</li>
+                <li>Iterative delivery via multiple builds</li>
+              </ul>
+            </div>
+
+          </div>
+          
+        </li>
+      </ul>
+      <Divider />
+
+      {/* Yansi Auto */}
+      <ul className='py-2 hover:bg-zinc-700'>
+        <li className=''>
+          
+          <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
+            <a href="https://yansiautorepairandpaint.com/" target="_blank">Yansi Auto Repair & Paint</a>
+            <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
+          </h3>
+
+          <p className='flex justify-center px-3 italic pb-2'> An local auto repair promotional website</p>
+
+          <div className='flex flex-col gap-1'>
+
+            <div className='flex flex-row justify-center gap-1'>
+              <img className='logo-img' src="./src/wordpress_img.png" alt="wordpress_icon" />
+              <img className='logo-img' src="./src/hostinger_img.png" alt="hostinger_icon" />
+            </div>
+
+            <div className=''>
+              <h4 className='pl-10'>Exp Gained:</h4>
+              <ul className=' pl-15 list-disc'>
+                <li>Deploying Wordpress sites </li>
+                <li>Purchasing and managing domain names</li>
+              </ul>
+            </div>
+
+          </div>
+          
+        </li>
+      </ul>
+      <Divider />
+
+      {/* Family House Clean */}
+      <ul className='py-2 hover:bg-zinc-700'>
+        <li className=''>
+          
+          <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
+            <a href="https://www.yourfamilyhousecleanllc.com/" target="_blank">YFHC</a>
+            <a href='https://github.com/CentipedeSully/YFHC-website' target='_blank'>Visit Github</a>
+          </h3>
+
+          <p className='flex justify-center px-3 italic pb-2'> A local family house cleaning promotional website</p>
+
+          <div className='flex flex-col gap-1'>
+
+            <div className='flex flex-row justify-center gap-1'>
+              <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
+              <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
+              <img className='render-img' src="./src/render_img.png" alt="render_icon" />
+            </div>
+
+            <div className=''>
+              <h4 className='pl-10'>Exp Gained:</h4>
+              <ul className=' pl-15 list-disc'>
+                <li>Connecting with potential clients</li>
+                <li>Developing Front ends using React, Tailwind, & Typescript</li>
+                <li>Delivering value and maintaining client relationships</li>
+              </ul>
+            </div>
+
+          </div>
+          
+        </li>
+      </ul>
+      
+    </div>
+  )
+ }
+
+export function Leverages(){
+
+  return (
+    <div className='bg-amber-950 overflow-y-auto  h-full'>
+
+      <div className='py-2'>
+        <h3>Leverage 1</h3>
+        <ul>
+          <li>subLeverage</li>
+          <li>subLeverage</li>
+          <li>subLeverage</li>
+        </ul>
+      </div>
+      <Divider/>
+
+      <div className='py-2'>
+        <h3>Leverage 2</h3>
+        <ul>
+          <li>subLeverage</li>
+          <li>subLeverage</li>
+          <li>subLeverage</li>
+        </ul>
+      </div>
+      <Divider/>
+
+      <div className='py-2'>
+        <h3>Leverage 3</h3>
+        <ul>
+          <li>subLeverage</li>
+          <li>subLeverage</li>
+          <li>subLeverage</li>
+        </ul>
+      </div>
+
+    </div>
+  )
+}
+
+export function Button(props){
+
+  function HandleClick(event){
+    props.HandleClick();
+  }
+
+  return (
+    <button 
+      className='rounded-full w-5 h-5 mx-auto my-auto bg-amber-950 hover:bg-amber-800 focus:bg-amber-500'
+      onClick={HandleClick}
+      type='button'
+      ></button>
+  )
 
 
-
-
+}
 
