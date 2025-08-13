@@ -6,11 +6,11 @@ function App() {
   const [contentPage, setContentPage] = useState(0)
 
   function SetPageToProjects(){
-    setContentPage(0);
+    setContentPage(1);
   }
   
   function SetPageToLeverages(){
-    setContentPage(1)
+    setContentPage(2)
   }
 
   return (
@@ -42,41 +42,46 @@ export function Navbar() {
 export function ContentArea(props){
 
 
-  function UpdateContent(){
-    switch (props.page){
-      case 0:
+  function UpdateContent(pageNumber){
+    switch (pageNumber){
+      case 1:
         setContentHeader("Projects");
         break;
       
-      case 1:
-        setContentHeader("Leverage");
+      case 2:
+        setContentHeader("Role Leverages");
         break;
     }
   }
 
-  function GetPageContent(){
+  function GetPageContent(pageNumber){
 
-    switch (props.page){
-      case 0:
+    switch (pageNumber){
+      case 1:
         return (<Projects/>);
       
-      case 1:
+      case 2:
         return (<Leverages/>);
     }
   }
 
 
+  const [pressedBtn, setPressedBtn] = useState(1)
 
   const [contentHeader, setContentHeader] = useState("")
   useEffect( ()=> {
-   UpdateContent();
+   UpdateContent(1);
   },[])
 
   function HandleBtn1Press(){
+    setPressedBtn(1);
+    UpdateContent(1);
     props.HandleBtn1Press();
   }
 
   function HandleBtn2Press(){
+    setPressedBtn(2);
+    UpdateContent(2);
     props.HandleBtn2Press();
   }
   
@@ -84,7 +89,7 @@ export function ContentArea(props){
     <div className='w-screen flex flex-col flex-1 px-10'>
 
       {/* Title, centered on smallest->meduim screens, Indented on large(+) screens */}
-      <div className='page-title flex justify-center pt-12 pb-4'>
+      <div className='page-title flex justify-center py-6'>
         <h1 >Portfolio Sully <span className='text-3xl'>(v4)</span></h1>
       </div>
 
@@ -96,7 +101,7 @@ export function ContentArea(props){
       <div className='flex justify-center bg-zinc-900 mb-12'> 
 
         {/* All content */}
-        <div className='page-content flex gap-2 flex-col md:flex-row border-2 border-zinc-900 rounded py-2'>
+        <div className='page-content flex gap-2 flex-col md:flex-row border-2 border-zinc-900 rounded py-2 px-2'>
 
           {/* Portrait & Summary Area */}
           <div className='protrait-area flex justify-center flex-col '>
@@ -107,12 +112,12 @@ export function ContentArea(props){
             </div>
 
             {/* Summary Area */}
-            <div id='overview-area' className='summary-area min-w-50'>
-              <div id='overview-slide' className='overview-area py-3 '>
+            <div id='overview-area' className='summary-area min-w-50 pt-2'>
+              <div id='overview-slide' className='overview-area bg-zinc-800 rounded'>
                 
-                <h2 className='text-center text-zinc-400 bg-zinc-800 rounded-t hover:bg-zinc-700'>Overview</h2>
-
-                <ul className='px-3 bg-zinc-900'>
+                <h2 className='text-center text-zinc-400 '>Overview</h2>
+                <Divider/>
+                <ul className='px-3 py-2 h-63'>
                   <li className='flex flex-row'>
                     <h3 className=''>Role:</h3>
                     <span className='flex-1 text-center'>(MERN) Full-Stack</span>
@@ -142,30 +147,32 @@ export function ContentArea(props){
                     <span className='flex-1 text-center'>GameDev <br/>Working Out<br/>Commander MTG<br/>Dungeons & Dragons</span>
                   </li>
                 </ul>
+
               </div>
             </div>
 
           </div>
 
           {/* Content Area */}
-          <div id='content-area' className='content-area mx-auto md:mx-0 bg-zinc-800 rounded w-100'>
+          <div id='content-area' className='content-area mx-auto bg-zinc-800 rounded w-100'>
 
 
             <div className='flex flex-row justify-around'>
               <h2 className='flex justify-center'>{contentHeader}</h2>
               <div className='flex flex-row gap-0.5'>
-                <Button HandleClick={HandleBtn1Press}/>
-                <Button HandleClick={HandleBtn2Press}/>
+                <Button HandleClick={HandleBtn1Press} BtnId={1} PressedBtn={pressedBtn}/>
+                <Button HandleClick={HandleBtn2Press} BtnId={2} PressedBtn={pressedBtn}/>
               </div>
             </div>
             
 
             <Divider />
             <div className='h-120'>
-              { GetPageContent() }
+              { GetPageContent(props.page) }
             </div>
             
             <Divider />
+            <div className='h-4'></div>
 
           </div>
           
@@ -248,7 +255,7 @@ export function Projects(){
             <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
           </h3>
 
-          <p className='flex justify-center px-3 italic pb-2'> An local auto repair promotional website</p>
+          <p className='flex justify-center px-3 italic pb-2'> A local auto repair promotional website</p>
 
           <div className='flex flex-col gap-1'>
 
@@ -311,34 +318,94 @@ export function Projects(){
 export function Leverages(){
 
   return (
-    <div className='bg-amber-950 overflow-y-auto  h-full'>
+    <div className='overflow-y-auto  h-full'>
 
-      <div className='py-2'>
-        <h3>Leverage 1</h3>
-        <ul>
-          <li>subLeverage</li>
-          <li>subLeverage</li>
-          <li>subLeverage</li>
+      <div className='py-3'>
+
+        <div className='flex flex-row justify-between px-15 gap-5'>
+          <h3 className='my-auto '>Programming :</h3>
+          <div className='flex flex-row justify-center gap-0.5'>
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+          </div>
+        </div>
+        
+        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <ul className='px-10 text-sm'>
+          <li className='list-disc'>Writing code and exploring reference documentation</li>
+          <li className='list-disc'>Documenting code for collaborators</li>
+          <li className='list-disc'>Simplifying complexity (solving larger problems)</li>
+          <li className='list-disc'>Grasp of core programming fundamentals (data structures, performance, etc)</li>
         </ul>
       </div>
       <Divider/>
 
-      <div className='py-2'>
-        <h3>Leverage 2</h3>
-        <ul>
-          <li>subLeverage</li>
-          <li>subLeverage</li>
-          <li>subLeverage</li>
+      <div className='py-3'>
+
+        <div className='flex flex-row justify-between px-15 gap-5'>
+          <h3 className='my-auto '>Design :</h3>
+          <div className='flex flex-row justify-center gap-0.5'>
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_empty_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_empty_img.png" alt="star_img" />
+          </div>
+        </div>
+        
+        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <ul className='px-10 text-sm'>
+          <li className='list-disc'>Implementing balanced and consistent visual aesthetics</li>
+          <li className='list-disc'>Providing satisfying UI feedback</li>
+          <li className='list-disc'>Implementing responsiveness to varying screen sizes</li>
         </ul>
       </div>
       <Divider/>
 
-      <div className='py-2'>
-        <h3>Leverage 3</h3>
-        <ul>
-          <li>subLeverage</li>
-          <li>subLeverage</li>
-          <li>subLeverage</li>
+      <div className='py-3'>
+
+        <div className='flex flex-row justify-between px-10 gap-5'>
+          <h3 className='my-auto whitespace-nowrap'>Team Collaboration :</h3>
+          <div className='flex flex-row justify-center gap-0.5'>
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+          </div>
+        </div>
+        
+        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <ul className='px-10 text-sm'>
+          <li className='list-disc'>Listening to and reaching out to team members</li>
+          <li className='list-disc'>Explaining functionality in non-technical terms</li>
+          <li className='list-disc'>Looking out for the wellbeing of other team members</li>
+          <li className='list-disc'>Tracking and communicating progression</li>
+        </ul>
+      </div>
+      <Divider/>
+
+      <div className='py-3'>
+
+        <div className='flex flex-row justify-between px-15 gap-5'>
+          <h3 className='my-auto '>Growth :</h3>
+          <div className='flex flex-row justify-center gap-0.5'>
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+          </div>
+        </div>
+        
+        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <ul className='px-10 text-sm'>
+          <li className='list-disc'>Willingness to understand unfamiliar subject matter</li>
+          <li className='list-disc'>Likelihood of pursuing independent practice</li>
+          <li className='list-disc'>Rate of learning</li>
         </ul>
       </div>
 
@@ -347,19 +414,53 @@ export function Leverages(){
 }
 
 export function Button(props){
+  const defaultColorClass = " bg-amber-900 hover:bg-amber-600 ";
+  const activeColorClass = " bg-amber-500 ";
+
+
 
   function HandleClick(event){
     props.HandleClick();
   }
 
+  function UpdateButtonColors(){
+    if (props.BtnId == props.PressedBtn)
+      return activeColorClass;
+    else return defaultColorClass;
+  }
+
   return (
     <button 
-      className='rounded-full w-5 h-5 mx-auto my-auto bg-amber-950 hover:bg-amber-800 focus:bg-amber-500'
+      className={ "rounded-full w-5 h-5 mx-auto my-auto " + UpdateButtonColors()}
       onClick={HandleClick}
       type='button'
       ></button>
   )
 
 
+}
+
+export function LeverageSubsection(props){
+
+
+  return (
+    <div>
+      <h3>{props.header}</h3>
+      <div className='flex flex-row justify-center'>
+        <img src="" alt="" />
+        <img src="" alt="" />
+        <img src="" alt="" />
+        <img src="" alt="" />
+        <img src="" alt="" />
+      </div>
+      <p>Defines the effectiveness of the following:</p>
+      <ul>
+        <li>boon 1</li>
+        <li>boon 2</li>
+        <li>boon 3</li>
+      </ul>
+    </div>
+
+  )
 }
 

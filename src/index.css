@@ -58,6 +58,12 @@ button {
   height: 50px;
 }
 
+.star-img{
+  object-fit: contain;
+  width: 25px;
+  height: 25px;
+}
+
 .render-img{
   object-fit: fill;
   width: 100px;
