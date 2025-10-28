@@ -10,7 +10,11 @@ function App() {
   }
   
   function SetPageToLeverages(){
-    setContentPage(2)
+    setContentPage(2);
+  }
+
+  function SetPageToCharacter(){
+    setContentPage(3);
   }
 
   return (
@@ -20,6 +24,7 @@ function App() {
         page = {contentPage}
         HandleBtn1Press = {SetPageToProjects}
         HandleBtn2Press = {SetPageToLeverages}
+        HandleBtn3Press = {SetPageToCharacter}
       />
       <Footer />  
     </div>
@@ -41,7 +46,7 @@ export function Navbar() {
 
 export function ContentArea(props){
 
-
+  
   function UpdateContent(pageNumber){
     switch (pageNumber){
       case 1:
@@ -50,6 +55,14 @@ export function ContentArea(props){
       
       case 2:
         setContentHeader("Role Leverages");
+        break;
+
+      case 3:
+        setContentHeader("Character");
+        break;
+
+      default:
+        setContentHeader("Projects");
         break;
     }
   }
@@ -62,16 +75,23 @@ export function ContentArea(props){
       
       case 2:
         return (<Leverages/>);
+
+      case 3:
+        return (<Character/>);
+      
+      default: 
+        return (<Projects/>);
+
     }
   }
 
 
-  const [pressedBtn, setPressedBtn] = useState(0)
+  const [pressedBtn, setPressedBtn] = useState(1)
 
   const [contentHeader, setContentHeader] = useState("")
   useEffect( ()=> {
-    setPressedBtn(0);
-    UpdateContent(0);
+    setPressedBtn(1);
+    UpdateContent(1);
   },[])
 
   function HandleBtn1Press(){
@@ -84,6 +104,12 @@ export function ContentArea(props){
     setPressedBtn(2);
     UpdateContent(2);
     props.HandleBtn2Press();
+  }
+
+  function HandleBtn3Press(){
+    setPressedBtn(3);
+    UpdateContent(3);
+    props.HandleBtn3Press();
   }
   
   return (
@@ -99,16 +125,16 @@ export function ContentArea(props){
          - small->medium screens see stacked view
          - large(+) screens see the side-by-side display
       */}
-      <div className='flex justify-center bg-zinc-900 mb-12'> 
+      <div className='flex flex-1 justify-center bg-zinc-900 mb-12'> 
 
         {/* All content */}
-        <div className='page-content flex gap-2 flex-col md:flex-row border-2 border-zinc-900 rounded py-2 px-2'>
+        <div className='page-content flex gap-2 flex-col justify-center md:flex-row border-2 lg:flex-wrap border-zinc-900 rounded py-2 px-2'>
 
           {/* Portrait & Summary Area */}
           <div className='protrait-area flex justify-center flex-col '>
 
             {/* Image Area */}
-            <div id='portrait' className='image-area min-w-50 max-w-80 min-h-60 max-h-60 mx-auto'>
+            <div id='portrait' className='image-area w-80 h-60 mx-auto'>
               <img className='portrait-image rounded' src="./src/helloThere.jpg" alt="handsome_man_saying_hello" />
             </div>
 
@@ -132,10 +158,6 @@ export function ContentArea(props){
                     <span className='flex-1 text-center'>$96,000</span>
                   </li>
                   <li className='flex flex-row'>
-                    <h3 className=''>Freelance:</h3>
-                    <span className='flex-1 text-center'>$1650 (1st week), $55/hr</span>
-                  </li>
-                  <li className='flex flex-row'>
                     <h3 className=''>Contact:</h3>
                     <a className='flex-1 text-center' href='mailto:Sullivansmith057@gmail.com' >~Send Email~</a>
                   </li>
@@ -154,33 +176,63 @@ export function ContentArea(props){
 
           </div>
 
-          {/* Content Area */}
-          <div id='content-area' className='content-area mx-auto bg-zinc-800 rounded w-100'>
-
-
+          {/* Content Area on smaller windows */}
+          <div id='solo-column-content-area' className='content-area mx-auto my-auto bg-zinc-800 rounded w-100 lg:hidden'>
             <div className='flex flex-row justify-between px-10'>
               <h2 className='flex justify-center'>{contentHeader}</h2>
-              <div className='flex flex-row gap-0.5'>
+              <div className='flex flex-row gap-1.5'>
                 <Button HandleClick={HandleBtn1Press} BtnId={1} PressedBtn={pressedBtn}/>
                 <Button HandleClick={HandleBtn2Press} BtnId={2} PressedBtn={pressedBtn}/>
+                <Button HandleClick={HandleBtn3Press} BtnId={3} PressedBtn={pressedBtn}/>
               </div>
             </div>
-            
-
             <Divider />
-            <div className='h-120'>
+            <div className='h-120 xl:h-160'>
               { GetPageContent(props.page) }
             </div>
-            
             <Divider />
             <div className='h-4'></div>
-
           </div>
-          
+
+          {/*Projects */}
+          <div className='w-100 bg-zinc-800 rounded hidden lg:block'>
+            <div className='flex flex-row justify-between px-10'>
+              <h2 className='flex justify-center'>Projects</h2>
+            </div>
+            <Divider />
+            <div className='h-120 xl:h-160'>
+              { GetPageContent(1) }
+            </div>
+            <Divider />
+            <div className='h-4'></div>
+          </div>
+
+          {/*Leverages */}
+          <div className='w-100 bg-zinc-800 rounded hidden lg:block'>
+            <div className='flex flex-row justify-between px-10'>
+              <h2 className='flex justify-center'>Role Leverages</h2>
+            </div>
+            <Divider />
+            <div className='h-120 xl:h-160'>
+              { GetPageContent(2) }
+            </div>
+            <Divider />
+            <div className='h-4'></div>
+          </div>
+
+          {/*Character */}
+          <div className='w-100 bg-zinc-800 rounded my-auto hidden lg:block'>
+            <div className='flex flex-row justify-between px-10'>
+              <h2 className='flex justify-center'>Character</h2>
+            </div>
+            <Divider />
+            <div className='lg:h-auto'>
+              { GetPageContent(3) }
+            </div>
+            <div className='h-4'></div>
+          </div>
         </div>
-
       </div>
-
     </div>
   )
 }
@@ -203,6 +255,49 @@ export function Footer(){
 
  }
 
+export function Character(){
+  return (
+    <div id = "character-section" className='h-auto'>
+
+       {/* Personality */}
+      <div className='py-3  hover:bg-zinc-700'>
+        <h3 className='my-auto text-center'>General Personality</h3>
+        <p className='px-8 pt-2 text-sm text-center text-gray-400'>This person's natural social presence and mentality</p>
+        <div className='px-5'>
+          <ul className='px-5 pt-3 flex flex-col justify-center text-center linkColored '>
+            <li className=''><p>Kind & Optimistic</p> </li>
+            <li className=''><p>Cerebral & Thoughtful</p></li>
+            <li className=''><p>Self-Responsible</p></li>
+          </ul>
+
+        </div>
+      </div>
+      <Divider/>
+
+      {/* Workplace behaviour */}
+      <div className='py-3  hover:bg-zinc-700'>
+        <h3 className='my-auto text-center'>Workplace Attributes</h3>
+        <p className='px-8 pt-2 text-sm text-center text-gray-400'>How this person generally operates while working</p>
+        <div className='px-5'>
+          <ul className='px-5 pt-3 flex flex-col justify-center text-center linkColored'>
+            <li className=''><p>Autonomous</p> </li>
+            <li className=''><p>Task-Oriented</p></li>
+            <li className=''><p>Feedback-Motivated</p></li>
+          </ul>
+
+        </div>
+      </div>
+      <Divider/>
+
+      {/* Extras */}
+      <div className='py-3  hover:bg-zinc-700'>
+        <h3 className='my-auto text-center '>" Simple is Best "</h3>
+      </div>
+      <Divider/>
+    </div>
+  )
+}
+
 export function Projects(){
   return (
     <div id='projects-section' className='projects-section overflow-y-auto h-full'>
@@ -216,7 +311,7 @@ export function Projects(){
             <a href='https://github.com/CentipedeSully/expJournal' target='_blank'>Visit Github</a>
           </h3>
 
-          <p className='flex justify-center px-3 italic pb-2'> A personal, full stack, cloud-based note organizer</p>
+          <p className='flex justify-center px-3 italic pb-2 text-gray-400'> A personal, full stack, cloud-based note organizer</p>
 
           <div className='flex flex-col gap-1'>
 
@@ -256,7 +351,7 @@ export function Projects(){
             <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
           </h3>
 
-          <p className='flex justify-center px-3 italic pb-2'> A local auto repair promotional website</p>
+          <p className='flex justify-center px-3 italic pb-2 text-gray-400'> A local auto repair promotional website</p>
 
           <div className='flex flex-col gap-1'>
 
@@ -288,7 +383,7 @@ export function Projects(){
             <a href='https://github.com/CentipedeSully/YFHC-website' target='_blank'>Visit Github</a>
           </h3>
 
-          <p className='flex justify-center px-3 italic pb-2'> A local family house cleaning promotional website</p>
+          <p className='flex justify-center px-3 italic pb-2 text-gray-400'> A local family house cleaning promotional website</p>
 
           <div className='flex flex-col gap-1'>
 
@@ -321,9 +416,9 @@ export function Leverages(){
   return (
     <div className='overflow-y-auto  h-full'>
 
-      <div className='py-3'>
+      <div className='py-3  hover:bg-zinc-700'>
 
-        <div className='flex flex-row justify-between px-15 gap-5'>
+        <div className='flex flex-row justify-between px-15 gap-5 '>
           <h3 className='my-auto '>Programming :</h3>
           <div className='flex flex-row justify-center gap-0.5'>
             <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
@@ -334,7 +429,7 @@ export function Leverages(){
           </div>
         </div>
         
-        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <p className='px-5 text-center py-2 whitespace-nowrap  text-gray-400'>-- Defines the effectiveness of the following --</p>
         <ul className='px-10 text-sm'>
           <li className='list-disc'>Writing code and exploring reference documentation</li>
           <li className='list-disc'>Documenting code for collaborators</li>
@@ -344,7 +439,7 @@ export function Leverages(){
       </div>
       <Divider/>
 
-      <div className='py-3'>
+      <div className='py-3  hover:bg-zinc-700'>
 
         <div className='flex flex-row justify-between px-15 gap-5'>
           <h3 className='my-auto '>Design :</h3>
@@ -357,7 +452,7 @@ export function Leverages(){
           </div>
         </div>
         
-        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <p className='px-5 text-center py-2 whitespace-nowrap  text-gray-400'>-- Defines the effectiveness of the following --</p>
         <ul className='px-10 text-sm'>
           <li className='list-disc'>Implementing balanced and consistent visual aesthetics</li>
           <li className='list-disc'>Providing satisfying UI feedback</li>
@@ -366,7 +461,7 @@ export function Leverages(){
       </div>
       <Divider/>
 
-      <div className='py-3'>
+      <div className='py-3  hover:bg-zinc-700'>
 
         <div className='flex flex-row justify-between px-10 gap-5'>
           <h3 className='my-auto whitespace-nowrap'>Team Collaboration :</h3>
@@ -375,11 +470,11 @@ export function Leverages(){
             <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
             <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
             <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./src/star_empty_img.png" alt="star_img" />
           </div>
         </div>
         
-        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <p className='px-5 text-center py-2 whitespace-nowrap text-gray-400'>-- Defines the effectiveness of the following --</p>
         <ul className='px-10 text-sm'>
           <li className='list-disc'>Listening to and reaching out to team members</li>
           <li className='list-disc'>Explaining functionality in non-technical terms</li>
@@ -389,7 +484,7 @@ export function Leverages(){
       </div>
       <Divider/>
 
-      <div className='py-3'>
+      <div className='py-3  hover:bg-zinc-700'>
 
         <div className='flex flex-row justify-between px-15 gap-5'>
           <h3 className='my-auto '>Growth :</h3>
@@ -402,7 +497,7 @@ export function Leverages(){
           </div>
         </div>
         
-        <p className='px-5 text-center py-2'>-- Defines the effectiveness of the following --</p>
+        <p className='px-5 text-center py-2 whitespace-nowrap text-gray-400'>-- Defines the effectiveness of the following --</p>
         <ul className='px-10 text-sm'>
           <li className='list-disc'>Willingness to understand unfamiliar subject matter</li>
           <li className='list-disc'>Likelihood of pursuing independent practice</li>
@@ -418,6 +513,9 @@ export function Button(props){
   const defaultColorClass = " bg-amber-900 hover:bg-amber-600 ";
   const activeColorClass = " bg-amber-500 ";
 
+  const defaultTextColorClass = " text-white"; 
+  const activeTextColorClass = " text-blue-950"; 
+
 
 
   function HandleClick(event){
@@ -430,12 +528,18 @@ export function Button(props){
     else return defaultColorClass;
   }
 
+  function UpdateButtonTextColors(){
+    if (props.BtnId == props.PressedBtn)
+      return activeTextColorClass;
+    else return defaultTextColorClass;
+  }
+
   return (
     <button 
-      className={ "rounded-full w-5 h-5 mx-auto my-auto " + UpdateButtonColors()}
+      className={ "rounded-full w-5 h-5 mx-auto my-auto" + UpdateButtonColors()}
       onClick={HandleClick}
       type='button'
-      ></button>
+      ><span className={"text-sm align-top" + UpdateButtonTextColors()}>{props.BtnId}</span></button>
   )
 
 
@@ -462,6 +566,23 @@ export function LeverageSubsection(props){
       </ul>
     </div>
 
+  )
+}
+
+export function Testamonials(){
+  return (
+    <div>
+
+    </div>
+  )
+}
+
+export function Testamonial(props){
+
+  return (
+    <div>
+      
+    </div>
   )
 }
 

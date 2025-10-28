@@ -69,3 +69,7 @@ button {
   width: 100px;
   height: 50px;
 }
+
+.linkColored {
+  color: #646cff;
+}
