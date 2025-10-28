@@ -135,7 +135,7 @@ export function ContentArea(props){
 
             {/* Image Area */}
             <div id='portrait' className='image-area w-80 h-60 mx-auto'>
-              <img className='portrait-image rounded' src="./src/helloThere.jpg" alt="handsome_man_saying_hello" />
+              <img className='portrait-image rounded' src="./helloThere.jpg" alt="handsome_man_saying_hello" />
             </div>
 
             {/* Summary Area */}
@@ -316,11 +316,11 @@ export function Projects(){
           <div className='flex flex-col gap-1'>
 
             <div className='flex flex-row justify-center gap-1'>
-              <img className='logo-img' src="./src/MongoDB_img.png" alt="mongoDb_icon" />
-              <img className='logo-img' src="./src/expressJs_img.png" alt="expressJs_icon" />
-              <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
-              <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
-              <img className='render-img' src="./src/render_img.png" alt="render_icon" />
+              <img className='logo-img' src="./MongoDB_img.png" alt="mongoDb_icon" />
+              <img className='logo-img' src="./expressJs_img.png" alt="expressJs_icon" />
+              <img className='logo-img' src="./react_img.png" alt="react_icon" />
+              <img className='logo-img' src="./nodeJs_img.png" alt="nodeJs_icon" />
+              <img className='render-img' src="./render_img.png" alt="render_icon" />
             </div>
 
             <div className=''>
@@ -356,8 +356,8 @@ export function Projects(){
           <div className='flex flex-col gap-1'>
 
             <div className='flex flex-row justify-center gap-1'>
-              <img className='logo-img' src="./src/wordpress_img.png" alt="wordpress_icon" />
-              <img className='logo-img' src="./src/hostinger_img.png" alt="hostinger_icon" />
+              <img className='logo-img' src="./wordpress_img.png" alt="wordpress_icon" />
+              <img className='logo-img' src="./hostinger_img.png" alt="hostinger_icon" />
             </div>
 
             <div className=''>
@@ -388,9 +388,9 @@ export function Projects(){
           <div className='flex flex-col gap-1'>
 
             <div className='flex flex-row justify-center gap-1'>
-              <img className='logo-img' src="./src/react_img.png" alt="react_icon" />
-              <img className='logo-img' src="./src/nodeJs_img.png" alt="nodeJs_icon" />
-              <img className='render-img' src="./src/render_img.png" alt="render_icon" />
+              <img className='logo-img' src="./react_img.png" alt="react_icon" />
+              <img className='logo-img' src="./nodeJs_img.png" alt="nodeJs_icon" />
+              <img className='render-img' src="./render_img.png" alt="render_icon" />
             </div>
 
             <div className=''>
@@ -421,11 +421,11 @@ export function Leverages(){
         <div className='flex flex-row justify-between px-15 gap-5 '>
           <h3 className='my-auto '>Programming :</h3>
           <div className='flex flex-row justify-center gap-0.5'>
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
           </div>
         </div>
         
@@ -444,11 +444,11 @@ export function Leverages(){
         <div className='flex flex-row justify-between px-15 gap-5'>
           <h3 className='my-auto '>Design :</h3>
           <div className='flex flex-row justify-center gap-0.5'>
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_empty_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_empty_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_empty_img.png" alt="star_img" />
+            <img className='star-img' src="./star_empty_img.png" alt="star_img" />
           </div>
         </div>
         
@@ -466,11 +466,11 @@ export function Leverages(){
         <div className='flex flex-row justify-between px-10 gap-5'>
           <h3 className='my-auto whitespace-nowrap'>Team Collaboration :</h3>
           <div className='flex flex-row justify-center gap-0.5'>
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_empty_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_empty_img.png" alt="star_img" />
           </div>
         </div>
         
@@ -489,11 +489,11 @@ export function Leverages(){
         <div className='flex flex-row justify-between px-15 gap-5'>
           <h3 className='my-auto '>Growth :</h3>
           <div className='flex flex-row justify-center gap-0.5'>
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img'src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
-            <img className='star-img' src="./src/star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img'src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
+            <img className='star-img' src="./star_filled_img.png" alt="star_img" />
           </div>
         </div>
         
