@@ -147,7 +147,7 @@ export function ContentArea(props){
                 <ul className='px-3 py-2 h-63'>
                   <li className='flex flex-row'>
                     <h3 className=''>Role:</h3>
-                    <span className='flex-1 text-center'>(MERN) Full-Stack</span>
+                    <span className='flex-1 text-center'>Software Developer</span>
                   </li>
                   <li className='flex flex-row'>
                     <h3 className=''>Area:</h3>
@@ -166,8 +166,12 @@ export function ContentArea(props){
                     <a className='flex-1 text-center' href='https://github.com/CentipedeSully' target='_blank'>CentipedeSully</a>
                   </li>
                   <li className='flex flex-row'>
+                    <h3 className=''>Games:</h3>
+                    <a className='flex-1 text-center' href='https://itch.io/profile/centipedesully' target='_blank'>CentipedeSully (itch.io)</a>
+                  </li>
+                  <li className='flex flex-row'>
                     <h3 className=''>Hobbies:</h3>
-                    <span className='flex-1 text-center'>GameDev <br/>Working Out<br/>Commander MTG<br/>Dungeons & Dragons</span>
+                    <span className='flex-1 text-center'>Working Out<br/>Commander MTG<br/>Dungeons & Dragons</span>
                   </li>
                 </ul>
 
@@ -342,38 +346,6 @@ export function Projects(){
       </ul>
       <Divider />
 
-      {/* Yansi Auto */}
-      <ul className='py-2 hover:bg-zinc-700'>
-        <li className=''>
-          
-          <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
-            <a href="https://yansiautorepairandpaint.com/" target="_blank">Yansi Auto Repair & Paint</a>
-            <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
-          </h3>
-
-          <p className='flex justify-center px-3 italic pb-2 text-gray-400'> A local auto repair promotional website</p>
-
-          <div className='flex flex-col gap-1'>
-
-            <div className='flex flex-row justify-center gap-1'>
-              <img className='logo-img' src="./wordpress_img.png" alt="wordpress_icon" />
-              <img className='logo-img' src="./hostinger_img.png" alt="hostinger_icon" />
-            </div>
-
-            <div className=''>
-              <h4 className='pl-10'>Exp Gained:</h4>
-              <ul className=' pl-15 list-disc'>
-                <li>Deploying Wordpress sites </li>
-                <li>Purchasing and managing domain names</li>
-              </ul>
-            </div>
-
-          </div>
-          
-        </li>
-      </ul>
-      <Divider />
-
       {/* Family House Clean */}
       <ul className='py-2 hover:bg-zinc-700'>
         <li className=''>
@@ -406,6 +378,38 @@ export function Projects(){
           
         </li>
       </ul>
+
+      {/* Yansi Auto */}
+      <ul className='py-2 hover:bg-zinc-700'>
+        <li className=''>
+          
+          <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
+            <a href="https://yansiautorepairandpaint.com/" target="_blank">Yansi Auto Repair & Paint</a>
+            <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
+          </h3>
+
+          <p className='flex justify-center px-3 italic pb-2 text-gray-400'> A local auto repair promotional website</p>
+
+          <div className='flex flex-col gap-1'>
+
+            <div className='flex flex-row justify-center gap-1'>
+              <img className='logo-img' src="./wordpress_img.png" alt="wordpress_icon" />
+              <img className='logo-img' src="./hostinger_img.png" alt="hostinger_icon" />
+            </div>
+
+            <div className=''>
+              <h4 className='pl-10'>Exp Gained:</h4>
+              <ul className=' pl-15 list-disc'>
+                <li>Deploying Wordpress sites </li>
+                <li>Purchasing and managing domain names</li>
+              </ul>
+            </div>
+
+          </div>
+          
+        </li>
+      </ul>
+      <Divider />
       
     </div>
   )
