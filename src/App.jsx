@@ -155,7 +155,7 @@ export function ContentArea(props){
                   </li>
                   <li className='flex flex-row'>
                     <h3 className=''>Salary:</h3>
-                    <span className='flex-1 text-center'>$96,000</span>
+                    <span className='flex-1 text-center'>$64,000</span>
                   </li>
                   <li className='flex flex-row'>
                     <h3 className=''>Contact:</h3>
@@ -379,12 +379,12 @@ export function Projects(){
         </li>
       </ul>
 
-      {/* Yansi Auto */}
+      {/* Yansi/Cortes Auto */}
       <ul className='py-2 hover:bg-zinc-700'>
         <li className=''>
           
           <h3 className='px-5 text-amber-500 flex flex-row justify-between'>
-            <a href="https://yansiautorepairandpaint.com/" target="_blank">Yansi Auto Repair & Paint</a>
+            <a href="https://cortesautorepairandpaint.com/" target="_blank">Cortes Auto Repair & Paint</a>
             <a className='hidden' href='https://github.com/CentipedeSully/' target='_blank'>-No Github-</a>
           </h3>
 
